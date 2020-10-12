@@ -78,4 +78,9 @@ double ExpressionVisitor::visitBinary(const BinaryExpression& expression) const 
     return expression.command_(left_child, right_child);
 }
 
-int main() {}
+int main() {
+    AgeBuilder b;
+    b.setYears(37);
+    b.setDays(345);
+    std::cout << b.build().years << std::endl;
+}

@@ -197,7 +197,7 @@ public:
         return *this;
     }
 
-    Age build() {
+    Age build() const {
         if (flags == (YEARS_FLAG | DAYS_FLAG)) {
             return {years_, days_};
         } else if (flags == BIRTH_DATE_FLAG) {
@@ -320,12 +320,12 @@ struct ExpressionVisitor;
 template <typename Buffer>
 class ExpressionFeature {
     double(*evaluatePtr)(const void*);
-    double(*acceptPtr)(const void*, const Expression& expression);
+    double(*acceptPtr)(const void*, const ExpressionVisitor& expression);
 
 public:
     template<typename T>
     ExpressionFeature(type_value<T>)
-            : evaluatePtr([](const void* self){ return static_cast<const T*>(self)->evaluate(); })
+            : evaluatePtr([](const void* self){ return static_cast<const T*>(self)->evaluate(); }),
               acceptPtr([](const void* self, const ExpressionVisitor& visitor){ return static_cast<const T*>(self)->accept(visitor); })
     { }
 
