@@ -62,6 +62,21 @@ class StdInReader implements Reader {
             return null;
         }
     }
+    // POST: Read a line from stdin channel if available, if not null.
+}
+
+interface BlockingReader {
+    String blockingReadString();
+    // POST: Block until can read a non-null string from a channel
+}
+
+class BlockingStdInReader extends StdInReader implements BlockingReader {
+    public String blockingReadString() {
+        String result;
+        while ((result = readString()) == null) { }
+        return result;
+    }
+    // POST: Block until can read a non-null string from stdin channel
 }
 
 final class ChannelBridge {
