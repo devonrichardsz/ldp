@@ -62,18 +62,18 @@ class LinearCollection<T> implements Iterable<T> {
 
 public class Main3 {
     public static void main(String[] args) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException, InstantiationException {
-        LinearCollection<String> collection;
+        LinearCollection<Object> collection;
         for (Class<?> cls : new Class<?>[]{ ArrayList.class, ArrayDeque.class,
                                             ConcurrentLinkedQueue.class, CopyOnWriteArrayList.class,
                                             LinkedBlockingDeque.class, LinkedBlockingQueue.class,
                                             LinkedList.class, Stack.class, Vector.class}) {
             System.out.println(cls.getCanonicalName());
-            collection = new LinearCollection<>(cls, String.class);
+            collection = new LinearCollection<>(cls, Object.class);
             for (String arg : args) {
                 collection.push_back(arg);
             }
             System.out.println(collection.size());
-            for (String s : collection) {
+            for (Object s : collection) {
                 System.out.println(s);
             }
         }
