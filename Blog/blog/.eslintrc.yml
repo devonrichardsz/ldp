@@ -8,6 +8,7 @@ extends:
   - plugin:react/recommended
   - plugin:eslint-comments/recommended
   - 'plugin:@typescript-eslint/recommended'
+  - 'plugin:@typescript-eslint/recommended-requiring-type-checking'
   - zemoso
 plugins:
   - babel
@@ -24,6 +25,10 @@ settings:
   import/resolver:
     typescript: {}
 parser: '@typescript-eslint/parser'
+parserOptions:
+  tsconfigRootDir: '.'
+  project: ['./tsconfig.json']
+root: true
 rules:
   eslint-comments/disable-enable-pair: off
   implicit-arrow-linebreak: 0
@@ -113,15 +118,7 @@ rules:
   react/prefer-stateless-function: error
   react/prop-types: 0
 overrides:
-  - files: ["**/*.js"]
-    globals:
-      isDebug: readonly
-  - files: ["**/*.test.js"]
-    globals:
-      shallow: readonly
-      render: readonly
-      mount: readonly
-      __DEV__: readonly
+  - files: ["**/*.test.tsx"]
     rules:
       import/first: off
 
