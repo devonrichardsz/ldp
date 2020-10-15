@@ -1,0 +1,127 @@
+env:
+  browser: true
+  jest/globals: true
+  es6: true
+extends:
+  - airbnb
+  - prettier
+  - plugin:react/recommended
+  - plugin:eslint-comments/recommended
+  - 'plugin:@typescript-eslint/recommended'
+  - zemoso
+plugins:
+  - babel
+  - jest
+  - prettier
+  - promise
+  - react
+  - react-hooks
+  - '@typescript-eslint'
+settings:
+  react:
+    pragma: React
+    version: detect
+  import/resolver:
+    typescript: {}
+parser: '@typescript-eslint/parser'
+rules:
+  eslint-comments/disable-enable-pair: off
+  implicit-arrow-linebreak: 0
+  import/no-extraneous-dependencies: off
+  import/prefer-default-export: 0
+  no-else-return: 0
+  no-use-before-define: 0
+  '@typescript-eslint/no-use-before-define':
+    - error
+    - variables: false
+  no-plusplus: 0
+  no-restricted-globals: 0
+  object-curly-newline: 0
+  operator-linebreak: 0
+  react/jsx-curly-newline: 0
+  react/jsx-filename-extension: off
+  react/jsx-indent: 0
+  react/jsx-props-no-spreading: off
+  react/no-array-index-key: off
+  array-callback-return: error
+  arrow-body-style:
+    - error
+    - as-needed
+  camelcase:
+    - error
+    - properties: never
+      ignoreDestructuring: true
+      ignoreImports: true
+  eslint-comments/no-unused-disable: error
+  func-style:
+    - error
+    - expression
+  import/extensions: error
+  import/no-named-as-default-member: error
+  import/order: 
+    - error
+    - pathGroups:
+      - pattern: "{assets,Auth,components,constants,navigation,scenes,services,utils,Auth,index}/**"
+        group: internal
+      newlines-between: always-and-inside-groups
+      alphabetize: 
+       order: asc
+       caseInsensitive: true
+  jsx-quotes: error
+  max-nested-callbacks:
+    - error
+    - 8
+  no-confusing-arrow: error
+  no-empty: error
+  no-nested-ternary: error
+  no-restricted-imports:
+    - error
+    - patterns: ['./*', '../*']
+  no-restricted-syntax:
+    - error
+    - WithStatement
+    - LabeledStatement
+    - BinaryExpression[operator='in']
+  no-undef: error
+  no-underscore-dangle: error
+  no-unused-expressions:
+    - error
+    - allowShortCircuit: true
+  no-unused-vars: error
+  no-useless-concat: error
+  no-useless-escape: error
+  prefer-arrow-callback: error
+  prefer-destructuring: error
+  prefer-object-spread: error
+  prefer-promise-reject-errors: error
+  prefer-rest-params: error
+  prefer-spread: error
+  prettier/prettier: error
+  promise/prefer-await-to-callbacks: error
+  promise/prefer-await-to-then: error
+  promise/valid-params: error
+  react-hooks/exhaustive-deps: error
+  react-hooks/rules-of-hooks: error
+  react/default-props-match-prop-types: 0
+  react/destructuring-assignment: error
+  react/display-name: error
+  react/jsx-one-expression-per-line: error
+  react/jsx-uses-react: error
+  react/no-unescaped-entities:
+    - error
+    - forbid: ['>', '"', '}']
+  react/prefer-stateless-function: error
+  react/prop-types: 0
+overrides:
+  - files: ["**/*.js"]
+    globals:
+      isDebug: readonly
+  - files: ["**/*.test.js"]
+    globals:
+      shallow: readonly
+      render: readonly
+      mount: readonly
+      __DEV__: readonly
+    rules:
+      import/first: off
+
