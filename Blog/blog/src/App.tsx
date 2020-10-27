@@ -1,14 +1,35 @@
-import React from 'react';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-export const App: React.FC = () => (
-  <div className="App">
-    <header className="App-header">
-      <p>TestP</p>
-      <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-        Learn React
-      </a>
-    </header>
-  </div>
-);
+import { Header } from 'components/molecules/Header';
+import { UserProvider } from 'contexts/UserContext';
+import { IUser } from 'types/User';
+
+export const THEME = createMuiTheme({ typography: { fontFamily: 'Roboto' } });
+
+export const App: React.FC = () => {
+  const [user, setUser] = useState<IUser | null>(null);
+  useEffect(() => {
+    // TODO: Load user from server.
+    setUser({
+      id: '3265',
+      name: 'Test User',
+      following: [],
+    });
+  }, []);
+  return (
+    <ThemeProvider theme={THEME}>
+      <UserProvider value={user}>
+        <Header />
+        <Router>
+          <Switch>
+            <Route path="/" />
+          </Switch>
+        </Router>
+      </UserProvider>
+    </ThemeProvider>
+  );
+};
 
 export default App;
