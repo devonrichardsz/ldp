@@ -1,10 +1,11 @@
 import { Button, Typography } from '@material-ui/core';
+import { ThumbUp } from '@material-ui/icons';
 import React from 'react';
 
 import { useActiveUser } from 'contexts/UserContext';
 
 export interface LikesProps {
-  users: [string];
+  users: string[];
 }
 
 export const Likes: React.FC<LikesProps> = ({ users }: LikesProps) => {
@@ -13,8 +14,9 @@ export const Likes: React.FC<LikesProps> = ({ users }: LikesProps) => {
   if (!activeUser) {
     return <Typography>users.length</Typography>;
   } else {
+    const color = users.includes(activeUser.id) ? 'primary' : 'secondary';
     return (
-      <Button color={users.includes(activeUser.id) ? 'secondary' : 'primary'} onClick={toggleLike}>
+      <Button startIcon={<ThumbUp color={color} />} color={color} onClick={toggleLike}>
         <Typography>{users.length}</Typography>
       </Button>
     );

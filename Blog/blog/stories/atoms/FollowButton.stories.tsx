@@ -14,7 +14,18 @@ export const Default = Template.bind({});
 // @ts-ignore-next-line
 Default.args = {
   toFollow: {
-    id: '3264',
+    id: '1234',
+    name: 'Test User',
+    following: [],
+  },
+};
+
+export const UserFollowing = Template.bind({});
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore-next-line
+UserFollowing.args = {
+  toFollow: {
+    id: '4567',
     name: 'Test User',
     following: [],
   },

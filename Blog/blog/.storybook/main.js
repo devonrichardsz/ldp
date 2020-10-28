@@ -10,7 +10,7 @@ module.exports = {
     "@storybook/addon-essentials",
   ],
   "webpackFinal": async (config, { configType }) => {
-    config.resolve.modules.push(path.resolve(__dirname, '../src'));
+    config.resolve.modules.push(path.resolve(__dirname, '../src'), path.resolve(__dirname, '../stories'));
 
     return config;
   },

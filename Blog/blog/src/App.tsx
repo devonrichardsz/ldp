@@ -1,12 +1,11 @@
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { Header } from 'components/molecules/Header';
 import { UserProvider } from 'contexts/UserContext';
 import { IUser } from 'types/User';
-
-export const THEME = createMuiTheme({ typography: { fontFamily: 'Roboto' } });
+import THEME from 'utils/theme';
 
 export const App: React.FC = () => {
   const [user, setUser] = useState<IUser | null>(null);

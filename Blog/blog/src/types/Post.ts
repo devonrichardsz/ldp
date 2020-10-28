@@ -1,19 +1,20 @@
-import { IUser } from 'types/User';
-
 export interface IComment {
-  user: IUser;
+  author: string;
   text: string;
-  children: [IComment];
-  likes: [string];
+  children: string[];
+  likes: string[];
   createdAt: Date;
   modifiedAt?: Date;
+  id: string;
 }
 
 export interface IPost {
   title: string;
+  thumbnail?: string;
   body: string;
-  likes: [string];
-  comments: [IComment];
+  summary: string;
+  likes: string[];
+  comments: string[];
   author: string;
   createdAt: Date;
   modifiedAt?: Date;

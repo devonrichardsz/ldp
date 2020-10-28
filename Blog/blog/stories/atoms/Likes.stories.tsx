@@ -15,3 +15,10 @@ export const Default = Template.bind({});
 Default.args = {
   users: [],
 };
+
+export const UserLiked = Template.bind({});
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore-next-line
+UserLiked.args = {
+  users: ['3456'],
+};

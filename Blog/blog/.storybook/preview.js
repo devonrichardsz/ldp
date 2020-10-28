@@ -2,16 +2,17 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import React from 'react';
 
 import { UserProvider } from 'contexts/UserContext';
-import { THEME } from 'App';
+import { IUser } from 'types/User';
+import { THEME } from 'utils/theme';
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
 }
 
-const user = {
-  id: '3265',
+const user: IUser = {
+  id: '3456',
   name: 'Test User',
-  following: [],
+  following: ['4567'],
 };
 
 export const decorators = [
